@@ -3,6 +3,8 @@ import { pool } from "./db.js";
 import taskRoutes from "./routes/task.routes.js";
 import "dotenv/config";
 
+import cors from "cors";
+
 
 
 const PORT = Number(process.env.PORT) || 3000;
@@ -10,6 +12,8 @@ const PORT = Number(process.env.PORT) || 3000;
 const app = express();
 
 app.use(express.json());
+
+app.use(cors());
 app.use("/tasks", taskRoutes);
 
 app.listen(PORT, async () => {
